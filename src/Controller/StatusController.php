@@ -165,9 +165,9 @@ class StatusController extends AbstractController
             ->getRepository(Status::class)
             ->find($id);
       
-        // if ($status->getTask()->count() > 0){
-        //     return new Response('Trinti negalima, nes turi task');
-        // };
+        if ($status->getTasks()->count() > 0){
+            return new Response('Trinti negalima, nes turi task');
+        };
 
         // remove metodu paduodame ta autoriu ir vykdome
         $entityManager = $this->getDoctrine()->getManager();

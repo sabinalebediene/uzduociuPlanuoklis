@@ -28,6 +28,16 @@
 								<input class="form-control" type="text" name="task_task_name" value="{{task.taskName}}" id="task_task_name">
 								<small class="form-text text-muted">Task</small>
 							</div>
+							<div class="form-group">
+								<label for="task_add_date">Task:</label>
+								<input class="form-control" type="text" name="task_add_date" value="{{task.addDate}}" id="task_add_date">
+								<small class="form-text text-muted">Add date</small>
+							</div>
+							<div class="form-group">
+								<label for="task_completed_date">Task:</label>
+								<input class="form-control" type="text" name="task_completed_date" value="{{task.completedDate}}" id="task_completed_date">
+								<small class="form-text text-muted">Add date</small>
+							</div>
 							<button class="btn btn-primary" type="submit">Edit task</button>
 							{# <input type="hidden" name="token" value="{{csrf_token('')}}"/> #}
 						</form>

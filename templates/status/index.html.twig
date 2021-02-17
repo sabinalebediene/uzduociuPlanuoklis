@@ -6,7 +6,7 @@
 {% block body %}
 
 
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row justify-content-center">
 			<div class="col-md-8">
 				<div class="card">
@@ -40,7 +40,6 @@
 										{% endfor %}
 									</ul>
 									<div class="list-group-item__line__buttons float-right btn-edit">
-										<a href="{{path('status_create', {id:status.id})}}" class="btn btn-secondary">ADD</a>
 										<a href="{{path('status_edit', {id:status.id})}}" class="btn btn-secondary">EDIT</a>
 										<form action="{{path('status_delete', {id:status.id})}}" method="POST">
 											<button type="submit" class="btn btn-primary">DELETE</button>

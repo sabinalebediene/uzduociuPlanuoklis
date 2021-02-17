@@ -6,6 +6,7 @@ use App\Repository\StatusRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=StatusRepository::class)
@@ -21,6 +22,13 @@ class Status
 
     /**
      * @ORM\Column(type="string", length=16)
+     * @Assert\NotBlank(message="Statuso pavadinimas negali buti tuscias")
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 16,
+     *      minMessage = "Statuso pavadinimas per trumpas. Turi buti bent  {{ limit }}  ilgio",
+     *      maxMessage = "Statuso pavadinimas per ilgas. Telpa tik {{ limit }} ilgis"
+     * )
      */
     private $name;
 

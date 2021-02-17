@@ -126,6 +126,8 @@ class TaskController extends AbstractController
         $entityManager->persist($task);
         $entityManager->flush();
 
+        $r->getSession()->getFlashBag()->add('success', 'Užduotis '.$task->getTaskName().' sėkmingai sukurta.');
+
         return $this->redirectToRoute('task_index');
     }
 
@@ -169,7 +171,6 @@ class TaskController extends AbstractController
     
         $task
         ->setTaskName($r->request->get('task_task_name'))
-        ->setTaskDescription($r->request->get('task_task_description'))
         ->setAddDate($r->request->get('task_add_date'))
         ->setCompletedDate($r->request->get('task_completed_date'))
         ->setStatus($status);
@@ -195,7 +196,7 @@ class TaskController extends AbstractController
     /**
      * @Route("/task/delete/{id}", name="task_delete", methods={"POST"})
      */
-    public function delete($id): Response
+    public function delete(Request $r, $id): Response
     {
 
         $task = $this->getDoctrine()
@@ -206,6 +207,8 @@ class TaskController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->remove($task);
         $entityManager->flush();
+
+        $r->getSession()->getFlashBag()->add('success', 'Užduotis '.$task->getTaskName().' sėkmingai ištrinta.');
 
         return $this->redirectToRoute('task_index');
     }

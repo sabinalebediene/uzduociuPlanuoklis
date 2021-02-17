@@ -6,7 +6,7 @@
 {% block body %}
 
 
-	<div class="container">
+	<div class="container-fluid">
 		<div class="row justify-content-center">
 			<div class="col-md-8">
 				<div class="card">
@@ -33,17 +33,23 @@
 						{% for task in tasks %}
 							<div class="card-header">
 								<div class="row card-body">
-									<h5 class="col-sm card-title card-title-outfit">
-										{{task.taskName}}</h5>
+									<div class="col-sm card-title card-title-outfit">
+										<h5>{{task.taskName}}</h5>
+										<p>Pradžios data:
+											{{task.addDate}}</p>
+										<p>Pabaigos data:
+											{{task.completedDate}}</p>
+									</div>
 									<h4 class="col-sm card-title card-title-master">
 										{{task.status.name}}
 									</h4>
-									<div class="w-80 list-group-item__line__buttons float-right btn-edit-line">
-										<a href="{{path('task_create', {id:task.id})}}" class="btn btn-secondary">ADD</a>
-										<a href="{{path('task_edit', {id:task.id})}}" class="btn btn-secondary">EDIT</a>
-										<form action="{{path('task_delete', {id:task.id})}}" method="POST">
-											<button type="submit" class="btn btn-primary">DELETE</button>
-										</form>
+									<div class="col-sm card-title card-title-outfit">
+										<div class="list-group-item__line__buttons float-right btn-edit-line">
+											<a href="{{path('task_edit', {id:task.id})}}" class="btn btn-secondary">EDIT</a>
+											<form action="{{path('task_delete', {id:task.id})}}" method="POST">
+												<button type="submit" class="btn btn-primary">DELETE</button>
+											</form>
+										</div>
 									</div>
 								</div>
 							</div>

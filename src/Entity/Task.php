@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TaskRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=TaskRepository::class)
@@ -19,6 +20,13 @@ class Task
 
     /**
      * @ORM\Column(type="string", length=128)
+     * @Assert\NotBlank(message="Pavadinimas negali buti tuscias")
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 128,
+     *      minMessage = "Užduoties pavadinimas per trumpas. Turi buti bent  {{ limit }}  ilgio",
+     *      maxMessage = "Užduoties pavadinimas per ilgas. Telpa tik {{ limit }} ilgis"
+     * )
      */
     private $task_name;
 
@@ -28,12 +36,12 @@ class Task
     private $task_description;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $add_date;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string")
      */
     private $completed_date;
 
@@ -76,24 +84,24 @@ class Task
         return $this;
     }
 
-    public function getAddDate(): ?int
+    public function getAddDate(): ?string
     {
         return $this->add_date;
     }
 
-    public function setAddDate(int $add_date): self
+    public function setAddDate(string $add_date): self
     {
         $this->add_date = $add_date;
 
         return $this;
     }
 
-    public function getCompletedDate(): ?int
+    public function getCompletedDate(): ?string
     {
         return $this->completed_date;
     }
 
-    public function setCompletedDate(int $completed_date): self
+    public function setCompletedDate(string $completed_date): self
     {
         $this->completed_date = $completed_date;
 

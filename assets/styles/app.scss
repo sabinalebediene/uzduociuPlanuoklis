@@ -72,24 +72,34 @@ body {
         color:darkmagenta;
     }
 
+    .form-check-input.custom {
+        margin-left: 10px;
+    }
+    
+    .form-check.custom {
+        padding-left: 0;
+    }
+    
+    form.sort-form {
+        display: flex;
+        align-content: center;
+        button {
+            height: 38px;
+            margin: 0 10px;
+        }
+    }
     
     @media screen and (max-width:1200px) {
-        .card-title-outfit {
-            font-size: 17px;
-        }
-        .card-title-master {
-            font-size: 17px; 
+        .form-control-new {
+            width: 140px;
         }
     }
     @media screen and (max-width:992px) {
         .col-sm {
             padding-left: 0px;
         }
-        .card-title-outfit {
-            font-size: 15px;
-        }
-        .card-title-master {
-            font-size: 15px; 
+        .form-control-new {
+            width: 120px;
         }
     }
 
