@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Status List
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-header">
+						<h1>Statuses</h1>
+					</div>
+					<div class="card-body">
+						<form action="{{path('status_index')}}" method="GET" lass="sort-form  ">
+							<div class="form-group">
+								<a class="btn-clear" href="{{path('status_index')}}">CLEAR</a>
+								<button type="submit" class="btn btn-dark btn-filter-sort">Sort IT!</button>
+								<select name="sort" class="form-control form-control-new">
+									<option value="default">default</option>
+									<option value="name_az" {% if sortBy =='name_az'%} selected {% endif %}>NAME A-Z</option>
+									<option value="name_za" {% if sortBy =='name_za'%} selected {% endif %}>NAME Z-A</option>
+								</select>
+								<p class="p-filter-sort">List by:</p>
+							</div>
+						</form>
+					</div>
+					<div class="card">
+						{% for status in statuses %}
+							<div class="card-header">
+								<div class="card-body">
+									<h4 class="card-title">
+										{{status.name}}</h4>
+									<p class="card-text">Status tasks</p>
+									<ul class="list-group list-group-flush">
+										{% for task in status.tasks %}
+											<li class="list-group-item">{{task.taskName}}</li>
+										{% endfor %}
+									</ul>
+									<div class="list-group-item__line__buttons float-right btn-edit">
+										<a href="{{path('status_create', {id:status.id})}}" class="btn btn-secondary">ADD</a>
+										<a href="{{path('status_edit', {id:status.id})}}" class="btn btn-secondary">EDIT</a>
+										<form action="{{path('status_delete', {id:status.id})}}" method="POST">
+											<button type="submit" class="btn btn-primary">DELETE</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

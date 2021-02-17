@@ -1,0 +1,103 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: lightgray;
+}
+
+
+.list-group-item {
+    &__line {
+        display: flex;
+        justify-content: space-between;
+        span {
+            font-size: 5px;
+        }
+        &__buttons {
+            display: flex;
+            .btn {
+                float: right;
+                margin: 0px;
+            }
+        }
+    }
+}
+
+.content-item {
+    display: flex;
+
+}
+
+.form-control-new {
+    display: inline-block;
+    float: right;
+    width: 170px;
+}
+
+    .btn-primary {
+        margin-top: 20px;
+    }
+
+    .btn-filter-sort, .p-filter {
+        display: inline-block;
+        float: right;
+        margin-bottom: 20px;
+        margin-left: 10px;
+    }
+    .btn-edit {
+        margin-top: 20px;
+    }
+    .btn-edit-line {
+        margin-bottom: 10px;
+    }
+    .btn-clear {
+        display: inline-block;
+        float: right;
+        margin-top: 8px;
+        margin-left: 10px;
+        font-size: 15px;
+    }
+    .p-filter-sort {
+        display: inline-block;
+        float: right;
+        margin-top: 8px;
+        margin-right: 10px;
+        font-size: 15px;
+    }
+
+    p {
+        margin-top: 20px;
+    }
+    h1, h4 {
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        color:darkmagenta;
+    }
+
+    
+    @media screen and (max-width:1200px) {
+        .card-title-outfit {
+            font-size: 17px;
+        }
+        .card-title-master {
+            font-size: 17px; 
+        }
+    }
+    @media screen and (max-width:992px) {
+        .col-sm {
+            padding-left: 0px;
+        }
+        .card-title-outfit {
+            font-size: 15px;
+        }
+        .card-title-master {
+            font-size: 15px; 
+        }
+    }
+
+    @media screen and (max-width:768px) {
+        .col-sm {
+            padding-left: 0px;
+        }
+        .card-title-outfit {
+            font-size: 15px;
+        }
+    }

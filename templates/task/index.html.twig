@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tasks List
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="card">
+					<div class="card-header">
+						<h1>Tasks</h1>
+					</div>
+					<div class="card-body">
+						<form action="{{path('task_index')}}" method="GET" lass="sort-form  ">
+							<div class="form-group">
+								<a class="btn-clear" href="{{path('task_index')}}">CLEAR</a>
+								<button type="submit" class="btn btn-dark btn-filter-sort">Filter IT!</button>
+								<select name="status_id" class="form-control form-control-new">
+									<option value="0">View All</option>
+									{% for status in statuses %}
+										<option value="{{status.id}}" {% if statusId == status.id %} selected {% endif %}>
+											{{status.name}}</option>
+									{% endfor %}
+								</select>
+								<p class="p-filter-sort">Filter by:</p>
+							</div>
+						</form>
+					</div>
+					<div class="card-responsive">
+						{% for task in tasks %}
+							<div class="card-header">
+								<div class="row card-body">
+									<h5 class="col-sm card-title card-title-outfit">
+										{{task.taskName}}</h5>
+									<h4 class="col-sm card-title card-title-master">
+										{{task.status.name}}
+									</h4>
+									<div class="w-80 list-group-item__line__buttons float-right btn-edit-line">
+										<a href="{{path('task_create', {id:task.id})}}" class="btn btn-secondary">ADD</a>
+										<a href="{{path('task_edit', {id:task.id})}}" class="btn btn-secondary">EDIT</a>
+										<form action="{{path('task_delete', {id:task.id})}}" method="POST">
+											<button type="submit" class="btn btn-primary">DELETE</button>
+										</form>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
